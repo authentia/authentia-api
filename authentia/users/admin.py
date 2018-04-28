@@ -8,7 +8,7 @@ class AuthentiaUserAdmin(admin.ModelAdmin):
 
 
 class CompanyUserAdmin(admin.ModelAdmin):
-    list_display = ('email', 'first_name', 'company', 'created')
+    list_display = ('email', 'first_name', 'company', 'token', 'created')
 
 
 class UserDocumentAdmin(admin.ModelAdmin):
