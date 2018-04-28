@@ -60,6 +60,14 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+AUTHENTICATION_BACKENDS = (
+    'api.backends.AnonymousUserAuthentication',
+    'api.backends.AuthentiaUserBackend',
+    'api.backends.AuthentiaUserTokenAuthentication',
+    'api.backends.CompanyUserTokenAuthentication',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
 ROOT_URLCONF = 'authentia.urls'
 
 TEMPLATES = [
