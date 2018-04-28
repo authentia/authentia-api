@@ -76,3 +76,27 @@ class CompanyUserTokenAuthentication(authentication.BaseAuthentication):
                 return None
         except TokenUserModel.DoesNotExist:
             return None
+
+
+class CompanyUserBackend(ModelBackend):
+    """
+    Authenticates agains clients.CompanyUser
+    This user class is based on default Django User System
+    so we can use all has_perms and all perms related functions
+    of default ModelBackend and only replace what we need.
+    """
+
+    def authenticate(self, username=None, password=None, **kwargs):
+        if not username or not password:
+            return None
+
+        user = get_object_or_None(CompanyUser, email=username)
+
+        if not user or not user.check_password(password):
+            return None
+
+        return user
+
+    def get_user(self, user_pk):
+        """Returns CompanyUser based on their Pk"""
+        return get_object_or_None(CompanyUser, pk=user_pk)

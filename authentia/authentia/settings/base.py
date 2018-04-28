@@ -64,6 +64,7 @@ AUTHENTICATION_BACKENDS = (
     'api.backends.AnonymousUserAuthentication',
     'api.backends.AuthentiaUserBackend',
     'api.backends.AuthentiaUserTokenAuthentication',
+    'api.backends.CompanyUserBackend',
     'api.backends.CompanyUserTokenAuthentication',
     'django.contrib.auth.backends.ModelBackend',
 )

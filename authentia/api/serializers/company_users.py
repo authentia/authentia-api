@@ -15,10 +15,12 @@ class CompanyUserDetailSerializer(serializers.ModelSerializer):
 
 
 class CompanyUserSerializer(serializers.ModelSerializer):
+    confirm_password = serializers.CharField(style={'input_type': 'password'}, write_only=True)
+    password = serializers.CharField(style={'input_type': 'password'}, write_only=True)
 
     class Meta:
         model = CompanyUser
-        exclude = ('is_admin', 'is_superuser', 'groups', 'user_permissions', 'password')
+        exclude = ('is_admin', 'is_superuser', 'groups', 'user_permissions', )
         read_only_fields = ('token', )
 
     def validate(self, data):
@@ -27,11 +29,6 @@ class CompanyUserSerializer(serializers.ModelSerializer):
 
         if confirm_password != password:
             raise serializers.ValidationError('Password and confirm password does not match.')
-
-        try:
-            validate_password(password)
-        except serializers.ValidationError as e:
-            raise serializers.ValidationError(e)
 
         return data
 

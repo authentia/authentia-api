@@ -1,7 +1,7 @@
 from rest_framework import permissions, generics, filters
 from rest_framework.authentication import TokenAuthentication, SessionAuthentication, BasicAuthentication
 
-from api.backends import BinderUserTokenAuthentication, AnonymousUserAuthentication
+from api.backends import AnonymousUserAuthentication, AuthentiaUserTokenAuthentication, CompanyUserTokenAuthentication
 
 
 class RequireAuthenticationMixin(object):
@@ -9,5 +9,5 @@ class RequireAuthenticationMixin(object):
 
 
 class RequireAnyTokenMixin(RequireAuthenticationMixin):
-    authentication_classes = (BinderUserTokenAuthentication,
+    authentication_classes = (AuthentiaUserTokenAuthentication, CompanyUserTokenAuthentication,
         SessionAuthentication, BasicAuthentication, AnonymousUserAuthentication)

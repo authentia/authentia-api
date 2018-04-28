@@ -29,11 +29,6 @@ class AuthentiaUserSerializer(serializers.ModelSerializer):
         if confirm_password != password:
             raise serializers.ValidationError('Password and confirm password does not match.')
 
-        # try:
-        #     validate_password(password)
-        # except serializers.ValidationError as e:
-        #     raise serializers.ValidationError(e)
-
         return data
 
     def create(self, validated_data):

@@ -5,7 +5,7 @@ from users.models import AuthentiaAbstractBaseUser, TokenUserModel
 
 
 class CompanyUser(AuthentiaAbstractBaseUser):
-    company = models.ForeignKey('companies.Company', on_delete=models.CASCADE)
+    company = models.OneToOneField('companies.Company', on_delete=models.CASCADE, null=True, blank=True)
     token = models.OneToOneField(TokenUserModel, related_name="company_user_token", null=True, blank=True, on_delete=models.CASCADE, max_length=250)
 
     def generate_sign(self):
