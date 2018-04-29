@@ -1,5 +1,6 @@
 certifi==2018.4.16
 chardet==3.0.4
+dj-database-url==0.5.0
 Django==2.0.4
 django-annoying==0.10.4
 django-cors-headers==2.2.0
@@ -17,3 +18,4 @@ sendgrid==5.3.0
 Unipath==1.1
 urllib3==1.22
 wheel==0.24.0
+whitenoise==3.3.1
