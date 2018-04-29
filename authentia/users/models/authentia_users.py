@@ -34,14 +34,11 @@ class AuthentiaUser(AuthentiaAbstractBaseUser):
         }
         print(payload)
         enroll_response = requests.post(url,headers=self.kairos_credentials,json=payload)
-        print('>>>>>>', enroll_response)
         enroll_response = json.loads(enroll_response.content.decode('utf-8'))
-        print('>>>>>>', enroll_response)
         pprint.pprint(enroll_response)
         return enroll_response
 
     def verify_user(self, image_url):
-        print('entrooo')
         url = 'https://api.kairos.com/verify'
 
         payload = {
@@ -49,9 +46,7 @@ class AuthentiaUser(AuthentiaAbstractBaseUser):
             'image' : image_url,
             'gallery_name' : 'auhtenia-users'
         }
-        print('deded>>>')
         verify_response = requests.post(url, headers=self.kairos_credentials, json=payload)
-        print(verify_response.json())
         verify_response = json.loads(verify_response.content.decode('utf-8'))
         pprint.pprint(verify_response)
         return verify_response

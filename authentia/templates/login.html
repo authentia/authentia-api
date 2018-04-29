@@ -1,0 +1,42 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+        crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+
+<body>
+    <title>Authentia</title>
+    <div class="form">
+        <img class="img-fluid" src="Logo.svg" alt="">
+        <div class="container">
+            <div class="card">
+                <br>
+                <form action="{% url 'authentication' %}" method="post">
+                {% csrf_token %}
+                <div class="container">
+                    <p>email</p>
+                    <input type="email" name="email" class="form-control">
+
+                    <p>Password</p>
+                    <input type="password" name="password" class="form-control">
+
+                    <br>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary text-center">Sign up</button>
+                    </div>
+                    <br>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

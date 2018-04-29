@@ -1,0 +1,16 @@
+body {
+    background-color: #6B2866;
+}
+
+.btn-primary{
+    width: 130px;
+    background-color: rgba(39, 39, 83,.8)
+}
+
+.card {
+    background-color: rgba(0, 0, 0, 0.5)
+}
+
+p {
+    color: white
+}
