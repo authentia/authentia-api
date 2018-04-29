@@ -12,9 +12,9 @@ class Kairos:
 		url = 'https://api.kairos.com/enroll'
 
 		payload = {
-			'image':image_url,
 			'subject_id':user_id,
 			'gallery_name':'MyGallery'
+			'image':image_url,
 		}
 
 		enroll_response = requests.post(url,headers=self.kairos_credentials,json=payload)
@@ -22,7 +22,7 @@ class Kairos:
 		pprint.pprint(enroll_response)
 
 	def verify_user(self,image_url,user_id):
-		
+
 		url = 'https://api.kairos.com/verify'
 
 		payload = {

@@ -1,7 +1,7 @@
 from rest_framework import generics
 
 from users.models import PhotoEnroll
-from api.serializers.user_documents import PhotoEnrollSerializer
+from api.serializers.photos_enrolled import PhotoEnrollSerializer
 from api.helpers.views import RequireAnyTokenMixin
 
 

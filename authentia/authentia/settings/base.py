@@ -170,5 +170,13 @@ CORS_ALLOW_HEADERS = (
 
 EMAIL_BACKEND = "sendgrid_backend.SendgridBackend"
 
+kairos_credentials = {
+    # 'app_id':'c0da87a9',
+    # 'app_key':'bd48f676be2614acae2ffcc8b2ddbc12'
+    'app_id':os.getenv('KAIRO_APP_ID'),
+    'app_key':os.getenv('KAIRO_APP_KEY'),
+
+}
+
 from .dependencies.rest_framework import *
 
