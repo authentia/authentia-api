@@ -1,5 +1,6 @@
 from authentia.settings.base import *
 
+DEBUG = False
 
 import os
 
