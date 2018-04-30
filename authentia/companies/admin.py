@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from companies.models import Company, CompanyDocument
+from companies.models import Company, CompanyDocument, Transaction
 
 # Register your models here.
 class CompanyAdmin(admin.ModelAdmin):
@@ -11,5 +11,10 @@ class CompanyDocumentAdmin(admin.ModelAdmin):
     list_display =  ('company', 'document_type', 'file', 'created')
 
 
+class TransactionAdmin(admin.ModelAdmin):
+    list_display =  ('company', 'user', 'status', 'photo', 'created')
+
+
 admin.site.register(Company, CompanyAdmin)
 admin.site.register(CompanyDocument, CompanyDocumentAdmin)
+admin.site.register(Transaction, TransactionAdmin)
