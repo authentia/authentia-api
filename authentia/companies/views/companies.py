@@ -41,7 +41,6 @@ class UserVerificationView(RequireAnyTokenMixin, APIView):
         file = serializer.validated_data.get('file')
         transaction = Transaction.objects.create(user=self.request.user, company=company, photo=file)
         verify = self.request.user.verify_user(self.request.build_absolute_uri(transaction.photo.url))
-        print('>>>>>', verify.get('images')[0].get('transaction').get('confidence'))
         if verify.get('Errors'):
             return Response({ 'verified': False, 'message': verify.get('Errors')[0].get('Message')})
         elif verify.get('images')[0].get('transaction').get('confidence') < 0.80:
