@@ -13,9 +13,15 @@ class Company(BaseModel):
     is_active = models.BooleanField(default=False)
     success_url = models.CharField(max_length=64)
     error_url = models.CharField(max_length=64)
+    sign = models.CharField(max_length=300, default='')
 
     def generate_sign(self):
         return signing.dumps(self.pk)
+
+    def save(self, *args, **kwargs):
+        if not self.pk:
+            self.sign = self.generate_sign()
+        return super().save(*args, **kwargs)
 
     def __str__(self):
         return self.bussiness_name

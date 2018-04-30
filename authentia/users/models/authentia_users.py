@@ -47,8 +47,7 @@ class AuthentiaUser(AuthentiaAbstractBaseUser):
             'gallery_name' : 'auhtenia-users'
         }
         verify_response = requests.post(url, headers=self.kairos_credentials, json=payload)
-        verify_response = json.loads(verify_response.content.decode('utf-8'))
-        pprint.pprint(verify_response)
+        verify_response = json.loads(verify_response.text)
         return verify_response
 
 

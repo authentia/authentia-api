@@ -28,3 +28,9 @@ class UserAuthTokenSerializer(serializers.Serializer):
     def authenticate(self, email, password):
         client = authenticate(username=email, password=password)
         return client
+
+
+class UserRecognitionSerializer(serializers.Serializer):
+    """
+    """
+    file = serializers.FileField()
