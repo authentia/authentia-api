@@ -96,7 +96,7 @@ AUTH_USER_MODEL = 'users.AuthentiaDefaultUser'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': os.getenv('AUTHENTIA_DB_NAME'),
         'USER': os.getenv('AUTHENTIA_DB_USER'),
         'PASSWORD': os.getenv('AUTHENTIA_DB_PASSWORD'),

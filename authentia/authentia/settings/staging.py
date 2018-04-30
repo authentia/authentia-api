@@ -1,8 +1,15 @@
 from authentia.settings.base import *
 
-import dj_database_url
 
+import os
 
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
-DATABASES['default']['ENGINE'] = 'django.contrib.gis.db.backends.postgis'
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.getenv('AUTHENTIA_DB_NAME'),
+        'USER': os.getenv('AUTHENTIA_DB_USER'),
+        'PASSWORD': os.getenv('AUTHENTIA_DB_PASSWORD'),
+        'HOST': os.getenv('AUTHENTIA_DB_HOST'),
+        'PORT': os.getenv('AUTHENTIA_DB_PORT'),
+    }
+}

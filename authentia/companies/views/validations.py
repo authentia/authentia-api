@@ -11,6 +11,7 @@ from companies.forms.authenticate import UserAuthForm
 from companies.forms.verification import VerificationForm
 from companies.models import Company, Transaction
 
+
 class UserLogin(View):
     template_name = 'login.html'
     form_class = UserAuthForm
@@ -20,8 +21,6 @@ class UserLogin(View):
         return render_to_response(self.get_context_data())
 
     def form_valid(self, form):
-        print('valido')
-        print (form.get_user())
         login(self.request, form.get_user())
         return HttpResponseRedirect(self.get_success_url())
 
@@ -58,9 +57,18 @@ class UserVerification(FormView):
         return super().form_valid(form)
 
 
-    def post(self, token, request, *args, **kwargs):
+    def post(self, request, token, *args, **kwargs):
         print(request.user)
         self.request = request
         self.company = Company.objects.get(pk=signing.loads(token))
         return super().post(request, *args, **kwargs)
 
+    def get(self, request, token, *args, **kwargs):
+        self.get_context_data(token=token)
+        return super().get(request, *args, **kwargs)
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['token'] = kwargs.get('token')
+        print(context)
+        return context
