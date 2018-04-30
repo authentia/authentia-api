@@ -16,4 +16,4 @@ class Transaction(BaseModel):
     photo = models.ImageField(upload_to=upload_to_kwargs(upload_to_generic, subfolder="transaction-photo"))
 
     def __str__(self):
-        return "{} {}".format(self.company.name, self.user.first_name)
+        return self.pk
